@@ -1,0 +1,66 @@
+body {
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 750px;
+    margin: auto;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+.formTable {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formTextField {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.actionBtn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.actionBtn:hover {
+    background-color: #45a049;
+}
+
+.productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.productTable th, .productTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.productTable th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.productTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
