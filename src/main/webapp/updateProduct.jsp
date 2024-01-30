@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 <div align="center">
   <h2>Update Product</h2>
@@ -21,6 +22,7 @@
     <s:textfield name="productName" label="Product Name" class="formTextField"/>
     <s:textfield name="productCategory" label="Product Category" class="formTextField"/>
     <s:textfield name="productPrice" label="Product Price" class="formTextField"/>
+    <s:textfield name="createdDate" label="Created date" class="formTextField" readonly="true"/>
     <s:submit value="Update Product" class="actionBtn"/>
   </s:form>
 

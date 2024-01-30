@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Blaze
@@ -11,11 +12,19 @@
 <head>
     <title>Welcome</title>
     <link rel="stylesheet" href="style.css">
+    <sx:head/>
 </head>
 <body>
-  <div align="center">
-    <h2>Welcome</h2>
+<%@ include file="header.jsp" %>
 
+  <div align="center" >
+    <h2>Welcome</h2>
+      <s:form action="welcomeAction" class="filterPanel">
+          <s:textfield name="productName" label="Product Name" class="formTextField"/>
+          <s:textfield name="productCategory" label="Product Category" class="formTextField"/>
+          <sx:datetimepicker name="createdDate" label="Create Date" displayFormat="dd-MMM-yyyy"/>
+          <s:submit value="Search Product" class="actionBtn"/>
+      </s:form>
   </div>
 
 <table width="750" class="productTable" align="center">
@@ -25,7 +34,8 @@
         <th>Product Name</th>
         <th>Product Category</th>
         <th>Product Price</th>
-        <th colspan="3">Actions</th>
+        <th>Created Date</th>
+        <th colspan="2">Actions</th>
     </tr>
     </thead>
 
@@ -45,10 +55,9 @@
                 <s:property value="#product.productPrice"/>
             </td>
             <td>
-                <a href="addProduct.jsp">
-                    <button class="actionBtn">Add New Product</button>
-                </a>
+                <s:property value="#product.createdDate"/>
             </td>
+
             <td>
                     <a href="updateDataAction?productId=<s:property value="#product.productId"/>">
                         <button class="actionBtn">Update</button>
@@ -60,10 +69,8 @@
                 </a>
             </td>
 
-
         </tr>
     </s:iterator>
-
 
 </table>
 

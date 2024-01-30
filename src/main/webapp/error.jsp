@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<%@ include file="header.jsp" %>
+
 <h2>Error Detected</h2>
 </body>
 </html>

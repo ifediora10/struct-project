@@ -4,16 +4,22 @@ import com.opensymphony.xwork2.ActionSupport;
 import dao.ProductDAO;
 import pojo.Product;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class AddAction extends ActionSupport {
     Integer productId;
     String productName;
     String productCategory;
     Integer productPrice;
 
+
     public String execute(){
 
         String statusCode = "";
-        Product product = new Product(productId,productName,productCategory,productPrice);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+        String createdDateStr = formatter.format(new Date());
+        Product product = new Product(productId,productName,productCategory,productPrice, createdDateStr );
         int recordAdded = ProductDAO.addProduct(product);
         if (recordAdded == 1) {
             statusCode = "success";

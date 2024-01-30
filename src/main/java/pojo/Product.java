@@ -6,18 +6,21 @@ public class Product {
     String productName;
     String productCategory;
     Integer productPrice;
+    String createdDate;
 
     public Product(){
 
     }
 
-    public Product(Integer productId, String productName, String productCategory, Integer productPrice) {
+    public Product(Integer productId, String productName, String productCategory, Integer productPrice, String createdDate) {
 
         this.productId = productId;
         this.productName = productName;
         this.productCategory = productCategory;
         this.productPrice = productPrice;
+        this.createdDate = createdDate;
     }
+
 
     public Integer getProductId() {
         return productId;
@@ -51,13 +54,22 @@ public class Product {
         this.productPrice = productPrice;
     }
 
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
-                "productId='" + productId + '\'' +
+                "productId=" + productId +
                 ", productName='" + productName + '\'' +
                 ", productCategory='" + productCategory + '\'' +
-                ", productPrice='" + productPrice + '\'' +
+                ", productPrice=" + productPrice +
+                ", createdDate='" + createdDate + '\'' +
                 '}';
     }
 }

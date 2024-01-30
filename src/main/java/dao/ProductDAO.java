@@ -9,29 +9,59 @@ import java.util.List;
 
 public class ProductDAO {
 
-    public static List<Product> getALlProducts(){
-
+    public static List<Product> getALlProducts(String productName, String productCategory, String createdDate) {
         List<Product> productList = new ArrayList<>();
+        String findProduct = "";
+
+        if (productName != null && !productName.isEmpty()) {
+            findProduct += "product_name = '" + productName + "'";
+        }
+
+        if (productCategory != null && !productCategory.isEmpty()) {
+            if (!findProduct.isEmpty()) {
+                findProduct += " AND ";
+            }
+            findProduct += "product_category = '" + productCategory + "'";
+        }
+
+        if (createdDate != null && !createdDate.isEmpty()) {
+            if (!findProduct.isEmpty()) {
+                findProduct += " AND ";
+            }
+            findProduct += "created_date = '" + createdDate + "'";
+        }
+
         try {
             Connection connection = DBUtil.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM product");
 
-            while (resultSet.next()){
+            String query = "SELECT * FROM product";
+            if (!findProduct.isEmpty()) {
+                query += " WHERE " + findProduct;
+            }
+
+            System.out.println(query);
+
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
                 Product product = new Product(resultSet.getInt("product_id"),
                         resultSet.getString("product_name"),
                         resultSet.getString("product_category"),
-                        resultSet.getInt("product_price")
-                        );
+                        resultSet.getInt("product_price"),
+                        resultSet.getString("created_date"));
                 productList.add(product);
             }
+
             DBUtil.closeConnection(connection);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         return productList;
     }
+
 
     public static int addProduct(Product product){
         int status = 0;
@@ -39,13 +69,13 @@ public class ProductDAO {
         try {
             Connection connection = DBUtil.getConnection();
 
-
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO product VALUES (?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO product VALUES (?,?,?,?,?)");
 
             preparedStatement.setInt(1, product.getProductId());
             preparedStatement.setString(2, product.getProductName());
             preparedStatement.setInt(3, product.getProductPrice());
             preparedStatement.setString(4, product.getProductCategory());
+            preparedStatement.setString(5, product.getCreatedDate());
             status = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -65,7 +95,8 @@ public class ProductDAO {
                 product = new Product(resultSet.getInt("product_id"),
                         resultSet.getString("product_name"),
                         resultSet.getString("product_category"),
-                        resultSet.getInt("product_price")
+                        resultSet.getInt("product_price"),
+                        resultSet.getString("created_date")
                 );
             }
         } catch (SQLException e) {
@@ -79,7 +110,6 @@ public class ProductDAO {
 
         try {
             Connection connection = DBUtil.getConnection();
-
 
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE product SET product_name=?, product_price=?, product_category=? WHERE product_id=?");
 
