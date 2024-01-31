@@ -15,8 +15,13 @@
         </interceptors>
 
         <default-interceptor-ref name="loginStack"/>
-        
-        <action name="LoginAction" class="action.LoginAction">
+
+        <action name="registerAction" class="action.RegisterAction">
+            <result name="success" type="redirect">/LoginAction</result>
+            <result name="input">/register.jsp</result>
+            <result name="error">/error.jsp</result>
+        </action>
+        <action name="loginAction" class="action.LoginAction">
             <result name="success" type="redirect">welcomeAction</result>
             <result name="input">/login.jsp</result>
         </action>
