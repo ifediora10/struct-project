@@ -12,7 +12,7 @@ public class RegisterAction extends ActionSupport {
 
     public String execute() {
 
-        if (getUsername() == null || getPassword() == null || getEmail() == null) {
+        if (getUsername().isEmpty() || getPassword().isEmpty() || getEmail().isEmpty()) {
             addActionError("All fields are required.");
             return "input";
         }

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5431/strutsCRUD</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="strutsCRUD@localhost [2]" uuid="5cc5a893-6a81-4c97-921c-119e4eaa98d4">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/strutsCRUD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

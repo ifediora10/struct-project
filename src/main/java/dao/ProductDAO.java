@@ -73,8 +73,8 @@ public class ProductDAO {
 
             preparedStatement.setInt(1, product.getProductId());
             preparedStatement.setString(2, product.getProductName());
-            preparedStatement.setInt(3, product.getProductPrice());
-            preparedStatement.setString(4, product.getProductCategory());
+            preparedStatement.setInt(4, product.getProductPrice());
+            preparedStatement.setString(3, product.getProductCategory());
             preparedStatement.setString(5, product.getCreatedDate());
             status = preparedStatement.executeUpdate();
 

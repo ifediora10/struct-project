@@ -16,18 +16,14 @@ public class WelcomeAction extends ActionSupport {
     private Date createdDate;
 
     public void initializeProducts(){
-        System.out.println("::::filter data::::");
-        System.out.println(productName);
-        System.out.println(productCategory);
-        System.out.println(createdDate);
+
         String createdDateStr = "";
         if (createdDate != null){
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
              createdDateStr = formatter.format(createdDate);
         }
 
-        products = ProductDAO//.getAllProducts(productName,productCategory,createdDateStr);
-                             .getALlProducts(productName,productCategory, createdDateStr);
+        products = ProductDAO.getALlProducts(productName,productCategory, createdDateStr);
     }
 
     public String execute(){
